@@ -15,6 +15,10 @@ return array(
 			// 'crypt' => array('crypt', array(
 			// 	// Hash type to use
 			// 	'type' => 'blowfish',
+			// 
+			// 	// Blowfish algorithm variant: $2a$ , $2x$ or $2y$
+			// 	// If starting a new project and using PHP >= 5.3.7, set this to $2y$
+			// 	'blowfish_mode' => '$2a$',
 			// )),
 
 			// // pbkdf2 hashing

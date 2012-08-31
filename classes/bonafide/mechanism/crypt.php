@@ -17,6 +17,24 @@
 class Bonafide_Mechanism_Crypt extends Bonafide_Mechanism {
 
 	/**
+	 * @param  string  blowfish mode
+	 *
+	 * For Blowfish it's safer to use newer $2y$ mode that is available only since PHP 5.3.7
+	 * Read: http://en.wikipedia.org/wiki/Crypt_%28Unix%29#Blowfish-based_scheme
+	 * Read: http://php.net/crypt
+	 *
+	 * Notice that the hash() result will be with different prefix, if you change this!
+	 *
+	 * To change this mode, set a setting in your config:
+	 *     ...
+	 *     'crypt' => array('crypt', array(
+	 *         'blowfish_mode' => '$2y$',
+	 *     )),
+	 *     ...
+	 */
+	public $blowfish_mode = '$2a$';
+
+	/**
 	 * @param  string  hash algorithm
 	 */
 	public $type = 'blowfish';
@@ -105,7 +123,7 @@ class Bonafide_Mechanism_Crypt extends Bonafide_Mechanism {
 		$iterations = sprintf('%02d', min(31, max($iterations, 4)));
 
 		// Create a salt suitable for bcrypt
-		return '$2a$'.$iterations.'$'.$salt.'$';
+		return $this->blowfish_mode.$iterations.'$'.$salt.'$';
 	}
 
 	/**
@@ -167,7 +185,9 @@ class Bonafide_Mechanism_Crypt extends Bonafide_Mechanism {
 			break;
 			default:
 				// $2a$ (4) 00 (2) $ (1) <salt> (22)
-				preg_match('/^\$2a\$(\d{2})\$(.{22})/D', $hash, $matches);
+				// $2x$ (4) 00 (2) $ (1) <salt> (22)
+				// $2y$ (4) 00 (2) $ (1) <salt> (22)
+				preg_match('/^'.preg_quote($this->blowfish_mode).'(\d{2})\$(.{22})/D', $hash, $matches);
 			break;
 		}
 
