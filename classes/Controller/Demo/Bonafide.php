@@ -90,7 +90,7 @@ class Controller_Demo_Bonafide extends Controller_Demo {
 			if ( ! $hash)
 			{
 				// No parameters included
-				$this->request->redirect($this->request->uri());
+				$this->redirect($this->request->uri());
 			}
 
 			$bonafide = Bonafide::instance();

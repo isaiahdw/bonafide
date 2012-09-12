@@ -12,7 +12,7 @@ return array(
 			// string $prefix => array(string $mechanism, array $config)
 
 			// // crypt hashing
-			// 'crypt' => array('crypt', array(
+			// 'crypt' => array('Crypt', array(
 			// 	// Hash type to use
 			// 	'type' => 'blowfish',
 			// 
@@ -22,7 +22,7 @@ return array(
 			// )),
 
 			// // pbkdf2 hashing
-			// 'pbkdf2' => array('pbkdf2', array(
+			// 'pbkdf2' => array('PBKDF2', array(
 			// 
 			// 	// Hash type to hash algorithm use
 			// 	'type' => 'sha1',
@@ -35,7 +35,7 @@ return array(
 			// )),
 
 			// // basic HMAC hashing
-			// 'hash' => array('hash', array(
+			// 'hash' => array('Hash', array(
 			// 	// Hash type to use when calling hash_hmac()
 			// 	'type' => 'sha256',
 			// 
@@ -44,7 +44,7 @@ return array(
 			// )),
 
 			// // legacy (v3.0) Auth module hashing
-			// 'legacy' => array('legacy'),
+			// 'legacy' => array('Legacy'),
 		),
 	),
 );
