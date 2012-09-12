@@ -1,4 +1,4 @@
-<?php defined('SYSPATH') or die('No direct script access.');
+<?php defined('SYSPATH') OR die('No direct script access.');
 /**
  * This mechanism provides support for PHP [One-way string hashing](http://php.net/manual/en/function.crypt.php).
  *
@@ -17,7 +17,7 @@
 class Bonafide_Mechanism_Crypt extends Bonafide_Mechanism {
 
 	/**
-	 * @param  string  blowfish mode
+	 * @var  string  blowfish mode
 	 *
 	 * For Blowfish it's safer to use newer $2y$ mode that is available only since PHP 5.3.7
 	 * Read: http://en.wikipedia.org/wiki/Crypt_%28Unix%29#Blowfish-based_scheme
@@ -35,19 +35,19 @@ class Bonafide_Mechanism_Crypt extends Bonafide_Mechanism {
 	public $blowfish_mode = '$2a$';
 
 	/**
-	 * @param  string  hash algorithm
+	 * @var  string  hash algorithm
 	 */
 	public $type = 'blowfish';
 
 	/**
-	 * @param  integer  iterations/cost
+	 * @var  integer  iterations/cost
 	 */
 	public $iterations = 5000;
 
 	/**
 	 * Pre-check supported hashing mechanism.
 	 *
-	 * @param  array  configuration
+	 * @var  array  $config  configuration
 	 */
 	public function __construct(array $config = NULL)
 	{
@@ -90,8 +90,8 @@ class Bonafide_Mechanism_Crypt extends Bonafide_Mechanism {
 	/**
 	 * Blowfish hashing.
 	 *
-	 * @param  string  input salt
-	 * @param  int     number between 4 and 31, base-2 logarithm of the iteration count
+	 * @param  string  $salt        input salt
+	 * @param  int     $iterations  number between 4 and 31, base-2 logarithm of the iteration count
 	 * @return string
 	 */
 	protected function blowfish($salt = NULL, $iterations = NULL)
@@ -129,8 +129,8 @@ class Bonafide_Mechanism_Crypt extends Bonafide_Mechanism {
 	/**
 	 * SHA256/SHA512 hashing.
 	 *
-	 * @param  string  input salt
-	 * @param  int     number between 1000 and 99999999
+	 * @param  string  $salt        input salt
+	 * @param  int     $iterations  number between 1000 and 99999999
 	 * @return string
 	 */
 	protected function sha($salt = NULL, $iterations = NULL)
