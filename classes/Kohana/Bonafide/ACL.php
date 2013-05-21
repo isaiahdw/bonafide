@@ -1,4 +1,4 @@
-<?php defined('SYSPATH') or die('No direct script access.');
+<?php defined('SYSPATH') OR die('No direct script access.');
 /**
  * Bonafide is a flexible authentication system for the Kohana Framework.
  *
@@ -45,8 +45,8 @@ abstract class Kohana_Bonafide_ACL {
 	 *
 	 *     $acl = Bonafide_ACL::instance($name, $config);
 	 *
-	 * @param   string  instance name
-	 * @param   array   configuration
+	 * @param   string  $name    instance name
+	 * @param   array   $config  configuration
 	 * @return  Bonafide_ACL
 	 */
 	public static function instance($name = NULL, array $config = NULL)
@@ -94,7 +94,7 @@ abstract class Kohana_Bonafide_ACL {
 	 *
 	 *     $acl = new Bonafide_ACL($config);
 	 *
-	 * @param   array  configuration
+	 * @param   array  $config  configuration
 	 * @return  void
 	 */
 	public function __construct(array $config = NULL)
@@ -142,8 +142,8 @@ abstract class Kohana_Bonafide_ACL {
 	 *     // Add a "admin" role
 	 *     $acl->role('admin');
 	 *
-	 * @param   string  role name
-	 * @param   mixed   copied role name or array of roles
+	 * @param   string  $name     role name
+	 * @param   mixed   $parents  copied role name or array of roles
 	 * @return  Bonafide_ACL
 	 */
 	public function role($name, $parents = NULL)
@@ -184,8 +184,8 @@ abstract class Kohana_Bonafide_ACL {
 	 *     // Add a "latest" resource with inherits from "news"
 	 *     $acl->resource('latest', 'news');
 	 *
-	 * @param   string  resource name
-	 * @param   mixed   single action or array of actions
+	 * @param   string  $name     resource name
+	 * @param   mixed   $actions  single action or array of actions
 	 * @return  Bonafide_ACL
 	 */
 	public function resource($name, $actions)
@@ -254,7 +254,7 @@ abstract class Kohana_Bonafide_ACL {
 	 *     // Get all possible actions for all resources
 	 *     $actions = $acl->actions();
 	 *
-	 * @param   mixed    single resource or array of resources
+	 * @param   mixed  $resources  single resource or array of resources
 	 * @return  array
 	 */
 	public function actions($resources = NULL)
@@ -322,8 +322,8 @@ abstract class Kohana_Bonafide_ACL {
 	 *     // Does "article" have a "comment" action?
 	 *     if ($acl->can('comment', 'article')) {}
 	 *
-	 * @param   string   action name
-	 * @param   string   resource name
+	 * @param   string   $action    action name
+	 * @param   string   $resource  resource name
 	 * @return  boolean
 	 */
 	public function can($action, $resource)
@@ -355,8 +355,8 @@ abstract class Kohana_Bonafide_ACL {
 	 * [!!] The entity constant (`Bonafide_ACL::ROLE`) or name (`'role'`) can
 	 * be used interchangably. Using constants will be slightly faster.
 	 *
-	 * @param   string  entity type
-	 * @param   string  entity name
+	 * @param   string  $entity  entity type
+	 * @param   string  $name    entity name
 	 * @return  boolean
 	 */
 	public function has($entity, $name)
@@ -392,9 +392,9 @@ abstract class Kohana_Bonafide_ACL {
 	 *     // Allow "admin" to do anything
 	 *     $acl->allow('admin');
 	 *
-	 * @param   string   role name
-	 * @param   mixed    single action or array of actions
-	 * @param   mixed    single resource or array of resources
+	 * @param   string   $role      role name
+	 * @param   mixed    $action    single action or array of actions
+	 * @param   mixed    $resource  single resource or array of resources
 	 * @return  Bonafide_ACL
 	 */
 	public function allow($role, $action = NULL, $resource = NULL)
@@ -415,9 +415,9 @@ abstract class Kohana_Bonafide_ACL {
 	 * not necessary to explicitly deny actions except when an inherited role
 	 * is allowed access.
 	 *
-	 * @param   string   role name
-	 * @param   mixed    single action or array of actions
-	 * @param   mixed    single resource or array of resources
+	 * @param   string   $role      role name
+	 * @param   mixed    $action    single action or array of actions
+	 * @param   mixed    $resource  single resource or array of resources
 	 * @return  Bonafide_ACL
 	 */
 	public function deny($role, $action = NULL, $resource = NULL)
@@ -435,10 +435,10 @@ abstract class Kohana_Bonafide_ACL {
 	 * [!!] It is not recommended to use this method directly. Instead, use
 	 * the [Bonafide_ACL::allow] and [Bonafide_ACL::deny] methods.
 	 *
-	 * @param   mixed    single role or array of roles
-	 * @param   mixed    single action or array of actions
-	 * @param   mixed    single resource or array of resources
-	 * @param   boolean  is the role allowed access?
+	 * @param   mixed    $roles      single role or array of roles
+	 * @param   mixed    $actions    single action or array of actions
+	 * @param   mixed    $resources  single resource or array of resources
+	 * @param   boolean  $access     is the role allowed access?
 	 * @return  Bonafide_ACL
 	 */
 	public function permission($roles, $actions, $resources, $access)
@@ -496,9 +496,9 @@ abstract class Kohana_Bonafide_ACL {
 	 *     // Is "admin" allowed to "edit" the "news"?
 	 *     $acl->allowed('admin', 'edit', 'news'); // TRUE
 	 *
-	 * @param   string   role name
-	 * @param   string   action type
-	 * @param   string   resource name
+	 * @param   string   $role      role name
+	 * @param   string   $action    action type
+	 * @param   string   $resource  resource name
 	 * @return  boolean
 	 */
 	public function allowed($role, $action, $resource)
@@ -551,9 +551,9 @@ abstract class Kohana_Bonafide_ACL {
 	 *     // Is "guest" denied to "view" the "latest"?
 	 *     $acl->denied('guest', 'view', 'latest'); // TRUE
 	 *
-	 * @param   string   role name
-	 * @param   string   action type
-	 * @param   string   resource name
+	 * @param   string   $role      role name
+	 * @param   string   $action    action type
+	 * @param   string   $resource  resource name
 	 * @return  boolean
 	 */
 	public function denied($role, $action = NULL, $resource = NULL)

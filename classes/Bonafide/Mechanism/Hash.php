@@ -1,4 +1,4 @@
-<?php defined('SYSPATH') or die('No direct script access.');
+<?php defined('SYSPATH') OR die('No direct script access.');
 /**
  * Bonafide is a flexible authentication system for the Kohana Framework.
  *
@@ -13,12 +13,12 @@
 class Bonafide_Mechanism_Hash extends Bonafide_Mechanism {
 
 	/**
-	 * @param  string  hash algorithm
+	 * @var  string  hash algorithm
 	 */
 	public $type = 'sha256';
 
 	/**
-	 * @param  string  shared secret key
+	 * @var  string  shared secret key
 	 */
 	public $key = NULL;
 

@@ -1,4 +1,4 @@
-<?php defined('SYSPATH') or die('No direct script access.');
+<?php defined('SYSPATH') OR die('No direct script access.');
 /**
  * Bonafide is a flexible authentication system for the Kohana Framework.
  *
@@ -16,12 +16,12 @@ abstract class Kohana_Bonafide {
 	const VERSION = '0.5.3.1';
 
 	/**
-	 * @param  string  default instance name
+	 * @var  string  default instance name
 	 */
 	public static $default = 'default';
 
 	/**
-	 * @param  array  Bonafide instances, by name
+	 * @var  array  Bonafide instances, by name
 	 */
 	public static $instances = array();
 
@@ -29,8 +29,8 @@ abstract class Kohana_Bonafide {
 	 * Get a Bonafide instance. If the instance has not yet been created,
 	 * a new instance will be created with the specified configuration.
 	 *
-	 * @param   string  instance name
-	 * @param   array   additional configuration settings
+	 * @param   string  $name    instance name
+	 * @param   array   $config  additional configuration settings
 	 * @return  Bonafide
 	 */
 	public static function instance($name = NULL, array $config = NULL)
@@ -64,8 +64,8 @@ abstract class Kohana_Bonafide {
 	/**
 	 * Load an authentication mechanism.
 	 *
-	 * @param   string  mechanism name
-	 * @param   array   configuration settings
+	 * @param   string  $name    mechanism name
+	 * @param   array   $config  configuration settings
 	 * @return  Bonafide_Mechanism
 	 */
 	public static function mechanism($name, array $config = NULL)
@@ -88,8 +88,8 @@ abstract class Kohana_Bonafide {
 	/**
 	 * Get a instance of ACL.
 	 *
-	 * @param   string  list name
-	 * @param   array   configuration settings
+	 * @param   string  $name    list name
+	 * @param   array   $config  configuration settings
 	 * @return  Bonafide_ACL
 	 */
 	public static function acl($name = NULL, array $config = NULL)
@@ -103,19 +103,19 @@ abstract class Kohana_Bonafide {
 	protected $_instance = '';
 
 	/**
-	 * @param  array  configuration settings
+	 * @var  array  configuration settings
 	 */
 	public $config = array();
 
 	/**
-	 * @param  array  registered mechanisms
+	 * @var  array  registered mechanisms
 	 */
 	public $mechanisms = array();
 
 	/**
 	 * Apply configuration and register prefixes.
 	 *
-	 * @param  array  configuration settings
+	 * @param  array  $config  configuration settings
 	 */
 	public function __construct(array $config = array())
 	{
@@ -183,9 +183,9 @@ abstract class Kohana_Bonafide {
 	/**
 	 * Hash a plaintext password using the current hashing mechanism.
 	 *
-	 * @param   string   plaintext password
-	 * @param   string   appended salt, should be unique per user
-	 * @param   integer  number of iterations to run
+	 * @param   string   $password    plaintext password
+	 * @param   string   $salt        appended salt, should be unique per user
+	 * @param   integer  $iterations  number of iterations to run
 	 * @return  boolean
 	 */
 	public function hash($password, $salt = NULL, $iterations = NULL)
@@ -198,10 +198,10 @@ abstract class Kohana_Bonafide {
 	/**
 	 * Check a user password against the password hash.
 	 *
-	 * @param   string   plaintext password
-	 * @param   string   hashed password, including prefix
-	 * @param   string   appended salt, should be unique per user
-	 * @param   integer  number of iterations to run
+	 * @param   string   $password    plaintext password
+	 * @param   string   $hash        hashed password, including prefix
+	 * @param   string   $salt        appended salt, should be unique per user
+	 * @param   integer  $iterations  number of iterations to run
 	 * @return  boolean
 	 */
 	public function check($password, $hash, $salt = NULL, $iterations = NULL)
@@ -228,7 +228,7 @@ abstract class Kohana_Bonafide {
 	 * used after a successful check to detemine if the password needs to be
 	 * hashed again using the newest mechanism.
 	 *
-	 * @param   string  hashed password
+	 * @param   string  $hash  hashed password
 	 * @return  boolean
 	 */
 	public function latest($hash)
@@ -239,7 +239,7 @@ abstract class Kohana_Bonafide {
 	/**
 	 * Get the mechanism prefix from a hash.
 	 *
-	 * @param   string  hashed password
+	 * @param   string  $hash  hashed password
 	 * @return  string
 	 */
 	public function prefix($hash)
@@ -267,7 +267,7 @@ abstract class Kohana_Bonafide {
 	/**
 	 * Applies preg_quote with a delimiter. Also, `array_map()` is stupid.
 	 *
-	 * @param   string  mechanism prefix
+	 * @param   string  $prefix  mechanism prefix
 	 * @return  string
 	 */
 	protected function _quote($prefix)
