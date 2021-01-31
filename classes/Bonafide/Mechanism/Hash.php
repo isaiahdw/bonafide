@@ -1,10 +1,10 @@
-<?php defined('SYSPATH') or die('No direct script access.');
+<?php defined('SYSPATH') OR die('No direct script access.');
 /**
- * Bona Fide is a flexible authentication system for the Kohana Framework.
+ * Bonafide is a flexible authentication system for the Kohana Framework.
  *
  * This mechanism provides support for HMAC password hashing.
  *
- * @package    Bona Fide
+ * @package    Bonafide
  * @category   Mechanisms
  * @author     Woody Gilk <woody.gilk@kohanaframework.org>
  * @copyright  (c) 2011 Woody Gilk
@@ -13,12 +13,12 @@
 class Bonafide_Mechanism_Hash extends Bonafide_Mechanism {
 
 	/**
-	 * @param  string  hash algorithm
+	 * @var  string  hash algorithm
 	 */
 	public $type = 'sha256';
 
 	/**
-	 * @param  string  shared secret key
+	 * @var  string  shared secret key
 	 */
 	public $key = NULL;
 

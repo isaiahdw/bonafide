@@ -1,8 +1,8 @@
-<?php defined('SYSPATH') or die('No direct script access.');
+<?php defined('SYSPATH') OR die('No direct script access.');
 /**
- * Bona Fide is a flexible authentication system for the Kohana Framework.
+ * Bonafide is a flexible authentication system for the Kohana Framework.
  *
- * @package    Bona Fide
+ * @package    Bonafide
  * @category   Base
  * @author     Woody Gilk <woody.gilk@kohanaframework.org>
  * @copyright  (c) 2011 Woody Gilk
@@ -13,7 +13,7 @@ abstract class Bonafide_Mechanism {
 	/**
 	 * Applies configuration variables to the current mechanism.
 	 *
-	 * @param  array  configuration
+	 * @param  array  $config  configuration
 	 */
 	public function __construct(array $config = NULL)
 	{
@@ -35,10 +35,10 @@ abstract class Bonafide_Mechanism {
 	 * [!!] To increase security, use a unique salt and a random iteration
 	 * count for every user!
 	 *
-	 * @param   string   plaintext password
-	 * @param   string   hashed password
-	 * @param   string   appended salt, should be unique per user
-	 * @param   integer  number of iterations to run
+	 * @param   string   $password    plaintext password
+	 * @param   string   $hash        hashed password
+	 * @param   string   $salt        appended salt, should be unique per user
+	 * @param   integer  $iterations  number of iterations to run
 	 * @return  boolean
 	 */
 	public function check($password, $hash, $salt = NULL, $iterations = NULL)
@@ -53,10 +53,9 @@ abstract class Bonafide_Mechanism {
 	 * [!!] To increase security, use a unique salt and a random iteration
 	 * count for every user!
 	 *
-	 * @param   string   plaintext password
-	 * @param   string   hashed password
-	 * @param   string   appended salt, should be unique per user
-	 * @param   integer  number of iterations to run
+	 * @param   string   $password    plaintext password
+	 * @param   string   $salt        appended salt, should be unique per user
+	 * @param   integer  $iterations  number of iterations to run
 	 * @return  boolean
 	 */
 	public function hash($password, $salt = NULL, $iterations = NULL)
@@ -69,7 +68,7 @@ abstract class Bonafide_Mechanism {
 			// Apply strengthening to the hashed password
 			$password = $this->_hash($password, $salt);
 		}
-		while(--$iterations > 0);
+		while (--$iterations > 0);
 
 		return $password;
 	}
@@ -77,8 +76,8 @@ abstract class Bonafide_Mechanism {
 	/**
 	 * Get the hash of some text.
 	 *
-	 * @param   string  input text
-	 * @param   string  appended salt
+	 * @param   string  $input  input text
+	 * @param   string  $salt   appended salt
 	 * @return  string
 	 */
 	abstract protected function _hash($input, $salt = NULL);

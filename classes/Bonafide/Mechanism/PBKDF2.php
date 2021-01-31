@@ -1,8 +1,8 @@
-<?php defined('SYSPATH') or die('No direct script access.');
+<?php defined('SYSPATH') OR die('No direct script access.');
 /**
  * PBKDF2 derived key mechanism for Bona Fide
  *
- * @package    Bona Fide
+ * @package    Bonafide
  * @category   Mechanisms
  * @author     Isaiah DeRose-Wilson <isaiah.derosewilson@kohanaframework.org>
  * @copyright  (c) 2011 Isaiah DeRose-Wilson
@@ -11,17 +11,17 @@
 class Bonafide_Mechanism_PBKDF2 extends Bonafide_Mechanism {
 
 	/**
-	 * @param  string  hash algorithm
+	 * @var  string  hash algorithm
 	 */
 	public $type = 'sha1';
 
 	/**
-	 * @param  int  number of iterations to use
+	 * @var  int  number of iterations to use
 	 */
 	public $iterations = 1000;
 
 	/**
-	 * @param  int  length of derived key to create
+	 * @var  int  length of derived key to create
 	 */
 	public $length = 40;
 
@@ -46,9 +46,9 @@ class Bonafide_Mechanism_PBKDF2 extends Bonafide_Mechanism {
 	 * [!!] The iteration count can not be set using this method
 	 *
 	 * @link    http://www.ietf.org/rfc/rfc2898.txt
-	 * @param   string   plaintext password
-	 * @param   string   appended salt, should be unique per user
-	 * @param   integer  number of iterations to run
+	 * @param   string   $password    plaintext password
+	 * @param   string   $salt        appended salt, should be unique per user
+	 * @param   integer  $iterations  number of iterations to run
 	 * @return  string  base64 encoded derived key
 	 */
 	public function hash($password, $salt = NULL, $iterations = NULL)
@@ -59,8 +59,8 @@ class Bonafide_Mechanism_PBKDF2 extends Bonafide_Mechanism {
 	/**
 	 * Internal method for creating the derived key
 	 *
-	 * @param   string  input text
-	 * @param   string  appended salt
+	 * @param   string  $input  input text
+	 * @param   string  $salt   appended salt
 	 * @return  string  base64 encoded derived key
 	 */
 	protected function _hash($input, $salt = NULL)
@@ -93,10 +93,10 @@ class Bonafide_Mechanism_PBKDF2 extends Bonafide_Mechanism {
 	 *
 	 * [!!] The iteration count can not be set using this method
 	 *
-	 * @param   string   plaintext password
-	 * @param   string   hashed password
-	 * @param   string   appended salt, should be unique per user
-	 * @param   integer  number of iterations to run
+	 * @param   string   $password    plaintext password
+	 * @param   string   $hash        hashed password
+	 * @param   string   $salt        appended salt, should be unique per user
+	 * @param   integer  $iterations  number of iterations to run
 	 * @return  boolean
 	 */
 	public function check($password, $hash, $salt = NULL, $iterations = NULL)

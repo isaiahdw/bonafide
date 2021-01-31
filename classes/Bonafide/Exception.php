@@ -1,8 +1,8 @@
-<?php defined('SYSPATH') or die('No direct script access.');
+<?php defined('SYSPATH') OR die('No direct script access.');
 /**
- * Bona Fide is a flexible authentication system for the Kohana Framework.
+ * Bonafide is a flexible authentication system for the Kohana Framework.
  *
- * @package    Bona Fide
+ * @package    Bonafide
  * @category   Base
  * @author     Woody Gilk <woody.gilk@kohanaframework.org>
  * @copyright  (c) 2011 Woody Gilk
